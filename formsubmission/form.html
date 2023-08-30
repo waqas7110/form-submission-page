@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+  <link rel="stylesheet" href="forms.css">
+  <script>
+    function validateForm() {
+      // Validate required fields
+      var firstName = document.getElementById("firstName").value;
+      var familyName = document.getElementById("familyName").value;
+      var phone1 = document.getElementById("phone1").value;
+      var phone2 = document.getElementById("phone2").value;
+      var applicationLetter = document.getElementById("applicationLetter").value;
+      var curriculumLetter = document.getElementById("curriculumLetter").value;
+
+      if (firstName === "" || familyName === "" || phone1 === "" || phone2 === "" || applicationLetter === "" || curriculumLetter === "") {
+        alert("Please fill in all required fields.");
+        return false;
+      }
+
+      // Validate file size
+      var maxFileSize = 50; // Maximum file size in MB
+      var applicationFileSize = document.getElementById("applicationLetter").files[0].size / (1024 * 1024); // Size of application letter file in MB
+      var curriculumFileSize = document.getElementById("curriculumLetter").files[0].size / (1024 * 1024); // Size of curriculum letter file in MB
+
+      if (applicationFileSize < maxFileSize || curriculumFileSize < maxFileSize) {
+        alert("File size must be at least " + maxFileSize + "MB.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>JOB</h1>
+    <div class = "main">
+      <marquee class="marq" bgcolor = "" direction = "right" loop="" >
+        <div class="geek1">Please fill all requird information correctly and follow all instruction.</div>
+        <!-- <div class="geek2" >He is a good boy.He is a nice person.<br>His personality is also good</div> -->
+      </marquee>
+      </div>
+    
+    <form onsubmit="return validateForm()">
+        <p>Application For*</p>
+        <div class="container1">
+          <label for="country"></label>
+          <select class="containera" id="country" name="country">
+            <option value="Job A">Job A</option>
+            <option value="Job B">Job B</option>
+            <option value="Job C">Job C</option>
+          </select>
+        </div>
+        <div class="container2">
+          <h1>Personal Data</h1>
+          <div class="input1">
+            <p>First Name*</p>
+            <input class="input1a" type="text" name="firstName" id="firstName" required>
+          </div>
+          <div class="input2">
+            <p class="input2b">Family Name*</p>
+            <input class="input2a" type="text" name="familyName" id="familyName" required>
+          </div>
+          <div>
+            <p class="input1">Citizenship</p>
+            <input class="input1a" type="text" name="citizenship">
+          </div>
+          <div class="input2">
+            <p class="input2b">Date Of Birth</p>
+            <input class="input2a" type="date" name="dateOfBirth">
+          </div>
+          <div class="input5">
+            <p class="input5b">Address</p>
+            <input class="input5a" type="text" name="address">
+          </div>
+          <div class="input1">
+            <p class="input1b">Phone*</p>
+            <input class="input1a" type="text" name="phone1" id="phone1" required>
+          </div>
+          <div class="input2">
+            <p class="input2b">Phone*</p>
+            <input class="input2a" type="text" name="phone2" id="phone2" required>
+          </div>
+        </div>
+        <div>
+          <h1>Application Documents</h1>
+          <div class="input8">
+            <p class="input8b">Application Letter</p>
+            <input class="input8a" type="file" name="applicationLetter" id="applicationLetter" required>
+          </div>
+          <div class="input9">
+            <p class="input9b">Curriculum Letter</p>
+            <input class="input9a" type="file" name="curriculumLetter" id="curriculumLetter" required>
+          </div>
+          <p>File Choice of minimum 50MB</p>
+        </div>
+
+      <button type="submit" class="input10">Submit Application</button>
+    </form>
+  </div>
+</body>
+</html>
